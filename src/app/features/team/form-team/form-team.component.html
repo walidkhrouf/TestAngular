@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Proposer un team</h2>
+    <form #addAlbumForm="ngForm" (ngSubmit)="onSubmit()">
+      <div>
+              <label for="name">name :</label>
+              <input id="name" name="name"  [(ngModel)]="name" required #selectedname="ngModel" />
+              <div *ngIf="selectedname.touched && selectedname.invalid">
+                  <small *ngIf="selectedname.errors?.['required']">Le nom est obligatoire.</small>
+
+              </div>
+          </div>
+  
+      <div>
+        <label for="projectDescription ">projectDescription :</label>
+        <input id="projectDescription " name="projectDescription " [(ngModel)]="projectDescription " minlength="5" #projectDescriptionModel ="ngModel"/>
+        <div *ngIf="projectDescriptionModel.touched && projectDescriptionModel.invalid">
+          <small *ngIf="projectDescriptionModel.errors?.['minlength']">La description doit contenir au moins 5 caractères.</small>
+        </div>
+      </div>
+  
+      
+     
+      <button type="submit" [disabled]="addAlbumForm.invalid">Proposer</button>
+    </form>
+  </div>
+  
